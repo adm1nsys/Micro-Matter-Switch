@@ -12,4 +12,21 @@ As a material I recomend to use PETG becouse it's easy to print, enough strong a
 <a href="https://github.com/adm1nsys/Micro-Matter-Switch/tree/main/Case">Git</a><br>
 <h3>Screws:</h3>
 This case was made for screws M3x12mm
-<h1></h1>
+<h2>Quick Start</h2>
+Download <a href="https://www.arduino.cc/en/software/">Arduino IDE for MAC/Linux/Windows10/11</a> <b>NOT</b> Arduino App Lab.<br>
+<h3>Setup IDE</h3>
+
+<ol>
+  <li>Open Arduino IDE</li>
+  <li>Open Preferences (Above)</li>
+  <li>Add in board manager URL - URL of board and click OK
+      
+    https://espressif.github.io/arduino-esp32/package_esp32_index.json
+  <img src="https://files.seeedstudio.com/wiki/SeeedStudio-XIAO-ESP32C6/img/boards_url.png" alt="menu" width="500">
+  </li>
+  <li>Download the XIAO ESP32C6 board package.<br>
+  <img src="https://files.seeedstudio.com/wiki/SeeedStudio-XIAO-ESP32C6/img/install_board.png" alt="board package" width="500"></li>
+  <li>Choose your board as a target (above)<br>
+  <img src="https://files.seeedstudio.com/wiki/SeeedStudio-XIAO-ESP32C6/img/select_xiao_c6.png" alt="choose board" width="500"></li>
+  <li>Download this repo, open MMS.ino file</li>
+</ol>
