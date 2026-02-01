@@ -29,4 +29,5 @@ Download <a href="https://www.arduino.cc/en/software/">Arduino IDE for MAC/Linux
   <li>Choose your board as a target (above)<br>
   <img src="https://files.seeedstudio.com/wiki/SeeedStudio-XIAO-ESP32C6/img/select_xiao_c6.png" alt="choose board" width="500"></li>
   <li>Download this repo, open MMS.ino file</li>
+  <li>Click on Upload or click Command(CMD) MAC / Control(Ctrl) WIN + U</li>
 </ol>
