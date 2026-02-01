@@ -1,5 +1,5 @@
 # Micro-Matter-Switch
-Micro Matter Switch (MMS) is a small compact stitch based on ESP32 C6 Xiao<br>
+Micro Matter Switch (MMS) is a small compact switch based on ESP32 C6 Xiao<br>
 <b>Note:</b> Code based on <a href="https://github.com/espressif/arduino-esp32/tree/master/libraries/Matter/examples">Espressif</a> examples but it's heavily restructured by <a href="https://github.com/adm1nsys">adm1nsys</a>.
 <h1>Board</h1>
 For this project I have used ESP32 C6 Xiao because it's realy tiny. This project can be compiled for another ESP32 but you have to make new case and inicialize your pins. 
