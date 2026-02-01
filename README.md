@@ -31,3 +31,7 @@ Download <a href="https://www.arduino.cc/en/software/">Arduino IDE for MAC/Linux
   <li>Download this repo, open MMS.ino file</li>
   <li>Click on Upload or click Command(CMD) MAC / Control(Ctrl) WIN + U</li>
 </ol>
+<h1>Add to Ecosystem</h1>
+Scan QR Code below to add or enter code <b>3497-011-2332</b> <br>
+<img src="https://github.com/adm1nsys/Micro-Matter-Switch/blob/main/ScanToAdd/Allinone.png?raw=true" alt="all qrcodes" width="500">
+<a href="https://project-chip.github.io/connectedhomeip/qrcode.html?data=MT:Y.K9042C00KA0648G00">https://project-chip.github.io/connectedhomeip/qrcode.html?data=MT:Y.K9042C00KA0648G00</a>
