@@ -1,0 +1,21 @@
+{
+  "fqbn_append": "PartitionScheme=huge_app,ZigbeeMode=disabled",
+  "requires": [
+    "CONFIG_SOC_WIFI_SUPPORTED=n",
+    "CONFIG_ESP_WIFI_REMOTE_ENABLED=n",
+    "CONFIG_CHIP_DEVICE_CONFIG_ENABLE_WIFI=n",
+    "CONFIG_ZB_ENABLED=n",
+    "CONFIG_USE_MINIMAL_MDNS=n",
+    "CONFIG_ENABLE_WIFI_STATION=n",
+    "CONFIG_ESP_MATTER_ENABLE_DATA_MODEL=y",
+    "CONFIG_OPENTHREAD_ENABLED=y", 
+    "CONFIG_SOC_IEEE802154_SUPPORTED=y",
+    "CONFIG_VFS_SUPPORT_SELECT=y",
+    "CONFIG_ESP_EVENTFD=y"
+
+  ],
+  "targets": {
+    "esp32c6": true,
+    "esp32h2": false
+  }
+}
