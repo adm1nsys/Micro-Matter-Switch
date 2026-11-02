@@ -1,37 +1,78 @@
-# Micro-Matter-Switch
-Micro Matter Switch (MMS) is a small compact switch based on ESP32 C6 Xiao<br>
-<b>Note:</b> Code based on <a href="https://github.com/espressif/arduino-esp32/tree/master/libraries/Matter/examples">Espressif</a> examples but it's heavily restructured by <a href="https://github.com/adm1nsys">adm1nsys</a>.
-<h1>Board</h1>
-For this project I have used ESP32 C6 Xiao because it's realy tiny. This project can be compiled for another ESP32 but you have to make new case and inicialize your pins. 
-<h3>Pinout of ESP 32 C6 Xiao</h3>
-<img src="https://wdcdn.qpic.cn/MTY4ODg1Nzc0ODUwMjM3NA_318648_dMoXitoaQiq2N3-a_1711678067?w=1486&h=1228" alt="esp32c6 xiao pinout" width="500">
-<a href="https://wiki.seeedstudio.com/xiao_esp32c6_getting_started/">ESP32 C6 Xiao WiKi</a>
-<h1>Case</h1>
-As a material I recomend to use PETG becouse it's easy to print, enough strong and has a lot of colours.<br>
-<h3>Download Case:</h3>
-<a href="https://github.com/adm1nsys/Micro-Matter-Switch/tree/main/Case">Git</a><br>
-<h3>Screws:</h3>
-This case was made for screws M3x12mm
-<h2>Quick Start</h2>
-Download <a href="https://www.arduino.cc/en/software/">Arduino IDE for MAC/Linux/Windows10/11</a> <b>NOT</b> Arduino App Lab.<br>
-<h3>Setup IDE</h3>
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset=".github/readme/banner-light.svg">
+  <img src=".github/readme/banner-dark.svg" alt="Micro Matter Switch — Four Matter buttons in a tiny 3D-printed case" width="100%">
+</picture>
 
-<ol>
-  <li>Open Arduino IDE</li>
-  <li>Open Preferences (Above)</li>
-  <li>Add in board manager URL - URL of board and click OK
-      
-    https://espressif.github.io/arduino-esp32/package_esp32_index.json
-  <img src="https://files.seeedstudio.com/wiki/SeeedStudio-XIAO-ESP32C6/img/boards_url.png" alt="menu" width="500">
-  </li>
-  <li>Download the XIAO ESP32C6 board package.<br>
-  <img src="https://files.seeedstudio.com/wiki/SeeedStudio-XIAO-ESP32C6/img/install_board.png" alt="board package" width="500"></li>
-  <li>Choose your board as a target (above)<br>
-  <img src="https://files.seeedstudio.com/wiki/SeeedStudio-XIAO-ESP32C6/img/select_xiao_c6.png" alt="choose board" width="500"></li>
-  <li>Download this repo, open MMS.ino file</li>
-  <li>Click on Upload or click Command(CMD) MAC / Control(Ctrl) WIN + U</li>
-</ol>
-<h1>Add to Ecosystem</h1>
-Scan QR Code below to add or enter code <b>3497-011-2332</b> <br>
-<img src="https://github.com/adm1nsys/Micro-Matter-Switch/blob/main/ScanToAdd/Allinone.png?raw=true" alt="all qrcodes" width="500">
-<a href="https://project-chip.github.io/connectedhomeip/qrcode.html?data=MT:Y.K9042C00KA0648G00">https://project-chip.github.io/connectedhomeip/qrcode.html?data=MT:Y.K9042C00KA0648G00</a>
+<p>
+  <a href="https://adm1nsys.github.io/Micro-Matter-Switch/"><img src="https://img.shields.io/badge/Website-070707?style=for-the-badge&logo=safari&logoColor=white" alt="Website"></a>
+  <a href="https://github.com/adm1nsys/Micro-Matter-Switch/archive/refs/heads/main.zip"><img src="https://img.shields.io/badge/Download_code-070707?style=for-the-badge&logo=arduino&logoColor=white" alt="Download the code"></a>
+  <a href="Case"><img src="https://img.shields.io/badge/Case_(STL)-070707?style=for-the-badge&logo=printables&logoColor=white" alt="Case files"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache--2.0-070707?style=for-the-badge&labelColor=070707&color=434343" alt="Apache-2.0 license"></a>
+</p>
+
+**Micro Matter Switch (MMS)** is a small Matter switch on a [Seeed XIAO ESP32-C6](https://wiki.seeedstudio.com/xiao_esp32c6_getting_started/)
+in a 3D-printed case. Four buttons show up in Apple Home, Google Home and Alexa as Matter buttons for automations,
+plus one switchable output — over Thread, set up via Bluetooth.
+
+Designed and written by [adm1nsys](https://github.com/adm1nsys) on top of the
+[Matter library of Espressif's Arduino core](https://github.com/espressif/arduino-esp32/tree/master/libraries/Matter).
+It is built as a **constructor**: every Matter device is a small module, and a new one is a new file plus one line in
+[`DeviceImport.h`](DeviceImport.h) — the switch here is one set of modules.
+
+## What it is
+
+- **Four buttons** as Matter buttons: a press runs an automation in the Home app.
+- **One output** (an on/off light in Matter) for a relay or an LED; its state survives a restart.
+- **Matter over Thread**, commissioned over Bluetooth. A Wi-Fi variant is prepared: `BLE_MODE 0` in [`variables.h`](variables.h).
+- The XIAO ESP32-C6 because it is really tiny. Other ESP32 boards work too, with their own pins and their own case.
+
+## Wiring
+
+| | Input (pull-up) | Other side of the button |
+|---|---|---|
+| Button 1 | GPIO 18 (D10) | GND |
+| Button 2 | GPIO 17 (D7) | GPIO 20 (D9), driven LOW |
+| Button 3 | GPIO 1 | GPIO 21 (D3), driven LOW |
+| Button 4 | GPIO 22 (D4) | GPIO 16 (D6), driven LOW |
+| Output | GPIO 21 | relay or LED, active LOW |
+
+Button 3 and the output both use GPIO 21 in the current code — if you use both, move one of them.
+
+## Case
+
+Two parts in [`Case/`](Case) — base and lid — for M3×12 screws: `CaseESP.stl`, `CaseESPtop.stl`, and the Fusion file
+`CaseESP.f3z` for changes. PETG works well: easy to print, strong enough, many colours.
+
+## Flashing
+
+1. Install the [Arduino IDE](https://www.arduino.cc/en/software/) — not Arduino App Lab.
+2. In Preferences, add the board manager URL `https://espressif.github.io/arduino-esp32/package_esp32_index.json`.
+3. Install the **esp32** package and pick **XIAO_ESP32C6** as the board.
+4. Open `MMS.ino` and upload (⌘U / Ctrl+U). [`build_opt.h`](build_opt.h) next to the sketch switches the build to Thread.
+
+My board settings: USB CDC On Boot enabled, 160 MHz, erase all flash before upload, 4 MB QIO 80 MHz,
+partition scheme *Huge APP (3MB No OTA/1MB SPIFFS)*, upload speed 115200 ([screenshot](build%20settings.png)).
+
+## Pairing
+
+In Apple Home, Google Home or Alexa choose *Add device* and scan the QR code or enter **3497-011-2332**
+(the Matter SDK's standard test code).
+
+<img src="ScanToAdd/Allinone.png" alt="Matter QR code and pairing code" width="500">
+
+Holding any of the four buttons or BOOT for five seconds resets the pairing. While the device is not paired, the LED blinks.
+
+## How the code is laid out
+
+| File | |
+|---|---|
+| [`MMS.ino`](MMS.ino) | start-up, Matter, pairing and the loop |
+| [`DeviceImport.h`](DeviceImport.h) | the list of Matter devices — each is a module with three functions (before start, after start, in the loop); a new device is a new file and one line here |
+| [`MatterButtons/`](MatterButtons) | the four buttons |
+| [`MatterOnOffLight/`](MatterOnOffLight) | the output |
+| [`custom_connect.h`](custom_connect.h) | your own actions on pairing, reset and a BOOT press |
+| [`variables.h`](variables.h) | pins, timings, BLE or Wi-Fi mode |
+
+## License
+
+[Apache-2.0](LICENSE).

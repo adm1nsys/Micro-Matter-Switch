@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Micro Matter Switch — adm1nsys</title>
+    <meta name="description" content="A small Matter-over-Thread switch on a Seeed XIAO ESP32-C6 with a 3D-printed case: four buttons for Apple Home, Google Home and Alexa automations.">
+    <meta name="theme-color" content="#070707" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#f9f9f9" media="(prefers-color-scheme: light)">
+    <link rel="icon" href="/adm1nsys/assets/img/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&family=Roboto:wght@400;500&display=swap">
+    <link rel="stylesheet" href="/adm1nsys/assets/css/style.css">
+    <link rel="stylesheet" href="/adm1nsys/kit/project.css">
+    <style>
+      .pair { display: grid; gap: 1rem; align-items: center; }
+      @media (min-width: 640px) { .pair { grid-template-columns: auto 1fr; } }
+      .pair img { width: 160px; height: 160px; padding: 10px; border-radius: 12px; background: #fff; image-rendering: pixelated; }
+      .pair-code { font: 500 clamp(1.5rem, 4vw, 2rem)/1.2 var(--mono); letter-spacing: 0.02em; color: var(--text); }
+    </style>
+  </head>
+  <body>
+    <div class="backdrop backdrop-short" aria-hidden="true"></div>
+
+    <main class="wrap">
+      <header class="page-head">
+        <p class="eyebrow">ESP32-C6 · Matter · Thread · 3D print</p>
+        <h1>Micro Matter Switch</h1>
+        <p class="lead" data-i18n="lead"></p>
+        <div class="actions">
+          <a class="btn btn-primary" data-download="source"
+             href="https://github.com/adm1nsys/Micro-Matter-Switch/archive/refs/heads/main.zip">
+            <span data-i18n="download"></span>
+          </a>
+          <a class="btn" href="#case" data-i18n="caseBtn"></a>
+          <a class="btn btn-ghost" href="https://github.com/adm1nsys/Micro-Matter-Switch" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+        <p class="meta" data-i18n="meta"></p>
+      </header>
+
+      <div class="folds">
+        <details class="card fold" open>
+          <summary><span data-i18n="whatTitle"></span><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="fold-body" data-i18n-html="whatBody"></div>
+        </details>
+
+        <details class="card fold">
+          <summary><span data-i18n="pinsTitle"></span><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="fold-body">
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th></th><th data-i18n="thInput"></th><th data-i18n="thOther"></th></tr></thead>
+                <tbody>
+                  <tr><td data-i18n="btn1"></td><td>GPIO 18 (D10)</td><td>GND</td></tr>
+                  <tr><td data-i18n="btn2"></td><td>GPIO 17 (D7)</td><td>GPIO 20 (D9) LOW</td></tr>
+                  <tr><td data-i18n="btn3"></td><td>GPIO 1</td><td>GPIO 21 (D3) LOW</td></tr>
+                  <tr><td data-i18n="btn4"></td><td>GPIO 22 (D4)</td><td>GPIO 16 (D6) LOW</td></tr>
+                  <tr><td data-i18n="out"></td><td>GPIO 21</td><td data-i18n="outNote"></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p data-i18n-html="pinsNote"></p>
+          </div>
+        </details>
+
+        <details class="card fold" id="case">
+          <summary><span data-i18n="caseTitle"></span><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="fold-body">
+            <p data-i18n="caseBody"></p>
+            <div class="release-files">
+              <a class="btn btn-sm" href="https://github.com/adm1nsys/Micro-Matter-Switch/raw/main/Case/CaseESP.stl">CaseESP.stl</a>
+              <a class="btn btn-sm" href="https://github.com/adm1nsys/Micro-Matter-Switch/raw/main/Case/CaseESPtop.stl">CaseESPtop.stl</a>
+              <a class="btn btn-sm" href="https://github.com/adm1nsys/Micro-Matter-Switch/raw/main/Case/CaseESP.f3z">CaseESP.f3z (Fusion)</a>
+            </div>
+          </div>
+        </details>
+
+        <details class="card fold">
+          <summary><span data-i18n="flashTitle"></span><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="fold-body">
+            <div data-i18n-html="flashBody"></div>
+            <div class="table-wrap">
+              <table>
+                <tbody>
+                  <tr><td>USB CDC On Boot</td><td>Enabled</td></tr>
+                  <tr><td>CPU Frequency</td><td>160 MHz</td></tr>
+                  <tr><td>Erase All Flash Before Sketch Upload</td><td>Enabled</td></tr>
+                  <tr><td>Flash Size / Mode / Frequency</td><td>4 MB · QIO · 80 MHz</td></tr>
+                  <tr><td>Partition Scheme</td><td>Huge APP (3MB No OTA/1MB SPIFFS)</td></tr>
+                  <tr><td>Upload Speed</td><td>115200</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p data-i18n-html="flashNote"></p>
+          </div>
+        </details>
+
+        <details class="card fold">
+          <summary><span data-i18n="pairTitle"></span><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="fold-body">
+            <div class="pair">
+              <img src="https://raw.githubusercontent.com/adm1nsys/Micro-Matter-Switch/main/ScanToAdd/QR.png" alt="Matter QR code" width="160" height="160">
+              <div>
+                <div class="pair-code">3497-011-2332</div>
+                <p data-i18n-html="pairBody"></p>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <details class="card fold">
+          <summary><span data-i18n="codeTitle"></span><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="fold-body" data-i18n-html="codeBody"></div>
+        </details>
+
+        <details class="card fold" id="versions" open>
+          <summary><span data-i18n="versionsTitle"></span><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="fold-body" data-releases></div>
+        </details>
+      </div>
+    </main>
+
+    <script>
+      const REPO = 'https://github.com/adm1nsys/Micro-Matter-Switch';
+      const file = (path, label = path) => `<a href="${REPO}/blob/main/${path}" target="_blank" rel="noopener"><code>${label}</code></a>`;
+      const ESPRESSIF = 'https://github.com/espressif/arduino-esp32/tree/master/libraries/Matter';
+      const SEEED = 'https://wiki.seeedstudio.com/xiao_esp32c6_getting_started/';
+      window.PROJECT = {
+        repo: 'adm1nsys/Micro-Matter-Switch',
+        license: 'Apache-2.0',
+        langs: ['de', 'en'],
+        fallback: [{ label: 'Micro-Matter-Switch (main, zip)', url: `${REPO}/archive/refs/heads/main.zip` }],
+        i18n: {
+          de: {
+            lead: 'Ein kleiner Matter-Schalter auf einem Seeed XIAO ESP32-C6 mit 3D-gedrucktem Gehäuse. Vier Tasten erscheinen in Apple Home, Google Home und Alexa als Matter-Tasten für Automationen, dazu ein schaltbarer Ausgang — über Thread, eingerichtet per Bluetooth.',
+            download: 'Code herunterladen',
+            caseBtn: 'Gehäuse (STL)',
+            meta: 'Arduino IDE · Matter over Thread · Apache-2.0',
+            whatTitle: 'Was es ist',
+            whatBody: `<ul><li><strong>Vier Tasten</strong> als Matter-Tasten: ein Druck löst in der Home-App eine Automation aus — Licht, Szene, was auch immer.</li><li><strong>Ein Ausgang</strong> (Ein/Aus-Licht in Matter) für ein Relais oder eine LED; der Zustand bleibt nach einem Neustart erhalten.</li><li><strong>Matter over Thread</strong>, eingerichtet per Bluetooth. Eine WLAN-Variante ist im Code vorgesehen (<code>BLE_MODE 0</code> in ${file('variables.h')}).</li><li>Der XIAO ESP32-C6, weil er wirklich winzig ist. Mit anderen ESP32 läuft es auch — dann braucht es eigene Pins und ein eigenes Gehäuse.</li></ul><p>Entworfen und geschrieben von adm1nsys auf der <a href="${ESPRESSIF}" target="_blank" rel="noopener">Matter-Bibliothek des ESP32-Arduino-Cores</a>. Gebaut als <strong>Baukasten</strong>: jedes Matter-Gerät ist ein kleines Modul, ein neues ist eine neue Datei und eine Zeile in ${file('DeviceImport.h')} — der Schalter hier ist eine Zusammenstellung solcher Module.</p>`,
+            pinsTitle: 'Verkabelung',
+            thInput: 'Eingang (Pull-up)', thOther: 'Andere Seite der Taste',
+            btn1: 'Taste 1', btn2: 'Taste 2', btn3: 'Taste 3', btn4: 'Taste 4',
+            out: 'Ausgang', outNote: 'Relais oder LED; aktiv LOW',
+            pinsNote: `Taste 1 geht gegen GND; die anderen gegen einen Pin, den die Firmware auf LOW legt. Pinbelegung des Boards: <a href="${SEEED}" target="_blank" rel="noopener">XIAO ESP32-C6 Wiki</a>. Hinweis: Taste 3 und der Ausgang teilen sich in ${file('variables.h')} und ${file('MatterOnOffLight/MatterOnOffLight.h', 'MatterOnOffLight.h')} GPIO 21 — wer beides nutzt, legt eins davon um.`,
+            caseTitle: 'Gehäuse',
+            caseBody: 'Zwei Teile, Boden und Deckel, für Schrauben M3×12. Gedruckt in PETG: leicht zu drucken, fest genug und in vielen Farben. Die Fusion-Datei ist zum Anpassen da.',
+            flashTitle: 'Flashen',
+            flashBody: `<ol><li><a href="https://www.arduino.cc/en/software/" target="_blank" rel="noopener">Arduino IDE</a> installieren — nicht Arduino App Lab.</li><li>In den Einstellungen die Boardverwalter-URL eintragen: <code>https://espressif.github.io/arduino-esp32/package_esp32_index.json</code></li><li>Das Paket <strong>esp32</strong> installieren und <strong>XIAO_ESP32C6</strong> als Board wählen.</li><li>Das Repository herunterladen, <code>MMS.ino</code> öffnen und hochladen (⌘U / Strg+U).</li></ol><p>So war mein Board eingestellt:</p>`,
+            flashNote: `Thread statt WLAN schaltet ${file('build_opt.h')} ein, das neben dem Sketch liegt.`,
+            pairTitle: 'Koppeln',
+            pairBody: 'In Apple Home, Google Home oder Alexa „Gerät hinzufügen“ wählen und den QR-Code scannen oder den Code eingeben. Das ist der Standard-Testcode des Matter-SDK. Eine der vier Tasten oder BOOT fünf Sekunden halten setzt die Kopplung zurück; solange das Gerät nicht gekoppelt ist, blinkt die LED.',
+            codeTitle: 'Aufbau des Codes',
+            codeBody: `<ul><li>${file('MMS.ino')} — Start, Matter, Kopplung und die Schleife.</li><li>${file('DeviceImport.h')} — die Liste der Matter-Geräte; jedes ist ein eigenes Modul mit drei Funktionen (vor dem Start, nach dem Start, in der Schleife). Ein neues Gerät ist eine neue Datei und eine Zeile hier.</li><li>${file('MatterButtons/MatterButton.h', 'MatterButtons/')} — die vier Tasten, ${file('MatterOnOffLight/MatterOnOffLight.h', 'MatterOnOffLight/')} — der Ausgang.</li><li>${file('custom_connect.h')} — eigene Aktionen beim Koppeln, Zurücksetzen und Druck auf BOOT.</li><li>${file('variables.h')} — Pins, Zeiten, BLE- oder WLAN-Modus.</li></ul>`,
+            versionsTitle: 'Versionen',
+            title: 'Micro Matter Switch — adm1nsys'
+          },
+          en: {
+            lead: 'A small Matter switch on a Seeed XIAO ESP32-C6 in a 3D-printed case. Four buttons show up in Apple Home, Google Home and Alexa as Matter buttons for automations, plus one switchable output — over Thread, set up via Bluetooth.',
+            download: 'Download the code',
+            caseBtn: 'Case (STL)',
+            meta: 'Arduino IDE · Matter over Thread · Apache-2.0',
+            whatTitle: 'What it is',
+            whatBody: `<ul><li><strong>Four buttons</strong> as Matter buttons: a press runs an automation in the Home app — a light, a scene, anything.</li><li><strong>One output</strong> (an on/off light in Matter) for a relay or an LED; its state survives a restart.</li><li><strong>Matter over Thread</strong>, set up via Bluetooth. A Wi-Fi variant is prepared in the code (<code>BLE_MODE 0</code> in ${file('variables.h')}).</li><li>The XIAO ESP32-C6 because it is really tiny. Other ESP32 boards work too — with their own pins and their own case.</li></ul><p>Designed and written by adm1nsys on top of the <a href="${ESPRESSIF}" target="_blank" rel="noopener">Matter library of Espressif’s Arduino core</a>. It is built as a <strong>constructor</strong>: every Matter device is a small module, and a new one is a new file plus one line in ${file('DeviceImport.h')} — the switch here is one set of such modules.</p>`,
+            pinsTitle: 'Wiring',
+            thInput: 'Input (pull-up)', thOther: 'Other side of the button',
+            btn1: 'Button 1', btn2: 'Button 2', btn3: 'Button 3', btn4: 'Button 4',
+            out: 'Output', outNote: 'relay or LED; active LOW',
+            pinsNote: `Button 1 goes to GND; the others to a pin the firmware drives LOW. Board pinout: <a href="${SEEED}" target="_blank" rel="noopener">XIAO ESP32-C6 wiki</a>. Note: button 3 and the output share GPIO 21 in ${file('variables.h')} and ${file('MatterOnOffLight/MatterOnOffLight.h', 'MatterOnOffLight.h')} — if you use both, move one of them.`,
+            caseTitle: 'Case',
+            caseBody: 'Two parts, base and lid, for M3×12 screws. Printed in PETG: easy to print, strong enough and available in many colours. The Fusion file is there for changes.',
+            flashTitle: 'Flashing',
+            flashBody: `<ol><li>Install the <a href="https://www.arduino.cc/en/software/" target="_blank" rel="noopener">Arduino IDE</a> — not Arduino App Lab.</li><li>Add the board manager URL in Preferences: <code>https://espressif.github.io/arduino-esp32/package_esp32_index.json</code></li><li>Install the <strong>esp32</strong> package and pick <strong>XIAO_ESP32C6</strong> as the board.</li><li>Download the repository, open <code>MMS.ino</code> and upload (⌘U / Ctrl+U).</li></ol><p>My board settings:</p>`,
+            flashNote: `${file('build_opt.h')}, next to the sketch, switches the build to Thread instead of Wi-Fi.`,
+            pairTitle: 'Pairing',
+            pairBody: 'In Apple Home, Google Home or Alexa choose “Add device” and scan the QR code or enter the code. It is the Matter SDK’s standard test code. Holding any of the four buttons or BOOT for five seconds resets the pairing; while the device is not paired, the LED blinks.',
+            codeTitle: 'How the code is laid out',
+            codeBody: `<ul><li>${file('MMS.ino')} — start-up, Matter, pairing and the loop.</li><li>${file('DeviceImport.h')} — the list of Matter devices; each is its own module with three functions (before start, after start, in the loop). A new device is a new file and one line here.</li><li>${file('MatterButtons/MatterButton.h', 'MatterButtons/')} — the four buttons, ${file('MatterOnOffLight/MatterOnOffLight.h', 'MatterOnOffLight/')} — the output.</li><li>${file('custom_connect.h')} — your own actions on pairing, reset and a BOOT press.</li><li>${file('variables.h')} — pins, timings, BLE or Wi-Fi mode.</li></ul>`,
+            versionsTitle: 'Versions',
+            title: 'Micro Matter Switch — adm1nsys'
+          }
+        }
+      };
+    </script>
+    <script src="/adm1nsys/kit/project.js"></script>
+  </body>
+</html>
