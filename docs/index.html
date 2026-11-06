@@ -15,6 +15,7 @@
       .pair { display: grid; gap: 1rem; align-items: center; }
       @media (min-width: 640px) { .pair { grid-template-columns: auto 1fr; } }
       .photos { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+      .photos-3 { grid-template-columns: repeat(3, 1fr); }
       .photos img { display: block; width: 100%; height: auto; border-radius: 12px; }
       .pair img { width: 140px; height: auto; padding: 8px; border-radius: 12px; background: #fff; }
       .pair-code { font: 500 clamp(1.5rem, 4vw, 2rem)/1.2 var(--mono); letter-spacing: 0.02em; color: var(--text); }
@@ -45,7 +46,7 @@
           <div class="fold-body">
             <div class="photos">
               <img src="img/mms-assembled.jpg" alt="Micro Matter Switch assembled: white and black 3D-printed case" width="1200" height="1200" loading="lazy">
-              <img src="img/mms-inside.jpg" alt="Inside: XIAO ESP32-C6 with four buttons in the open case" width="1200" height="1200" loading="lazy">
+              <img src="img/mms-assembled-back.jpg" alt="Assembled, other side with the USB-C port" width="1200" height="1200" loading="lazy">
             </div>
             <div data-i18n-html="whatBody"></div>
           </div>
@@ -67,6 +68,12 @@
               </table>
             </div>
             <p data-i18n-html="pinsNote"></p>
+            <p data-i18n="buttonsNote"></p>
+            <div class="photos photos-3">
+              <img src="img/mms-inside.jpg" alt="Inside: XIAO ESP32-C6 with four buttons in the open case" width="1200" height="1200" loading="lazy">
+              <img src="img/mms-no-case.jpg" alt="Board with the four buttons, without the case" width="1200" height="1200" loading="lazy">
+              <img src="img/mms-board.jpg" alt="Two XIAO ESP32-C6 boards, top side" width="1200" height="1200" loading="lazy">
+            </div>
           </div>
         </details>
 
@@ -150,6 +157,7 @@
             btn1: 'Taste 1', btn2: 'Taste 2', btn3: 'Taste 3', btn4: 'Taste 4',
             out: 'Ausgang', outNote: 'Relais oder LED; aktiv LOW',
             pinsNote: `Taste 1 geht gegen GND; die anderen gegen einen Pin, den die Firmware auf LOW legt. Pinbelegung des Boards: <a href="${SEEED}" target="_blank" rel="noopener">XIAO ESP32-C6 Wiki</a>. Hinweis: Taste 3 und der Ausgang teilen sich in ${file('variables.h')} und ${file('MatterOnOffLight/MatterOnOffLight.h', 'MatterOnOffLight.h')} GPIO 21 — wer beides nutzt, legt eins davon um.`,
+            buttonsNote: 'Die Tasten sind normale Taster mit vier Beinen, bei denen zwei Beine schräg gegenüber abgebrochen sind; die übrigen Beine umgreifen die Pins des Boards. In einer Reihe: abgebrochen, ganz, abgebrochen; in der anderen: ganz, abgebrochen — auf der zweiten Seite gespiegelt. So passt alles in das kleine Gehäuse.',
             caseTitle: 'Gehäuse',
             caseBody: 'Zwei Teile, Boden und Deckel, für Schrauben M3×12. Gedruckt in PETG: leicht zu drucken, fest genug und in vielen Farben. Die Fusion-Datei ist zum Anpassen da.',
             flashTitle: 'Flashen',
@@ -174,6 +182,7 @@
             btn1: 'Button 1', btn2: 'Button 2', btn3: 'Button 3', btn4: 'Button 4',
             out: 'Output', outNote: 'relay or LED; active LOW',
             pinsNote: `Button 1 goes to GND; the others to a pin the firmware drives LOW. Board pinout: <a href="${SEEED}" target="_blank" rel="noopener">XIAO ESP32-C6 wiki</a>. Note: button 3 and the output share GPIO 21 in ${file('variables.h')} and ${file('MatterOnOffLight/MatterOnOffLight.h', 'MatterOnOffLight.h')} — if you use both, move one of them.`,
+            buttonsNote: 'The buttons are ordinary four-leg tactile switches with two diagonally opposite legs broken off; the remaining legs wrap around the board’s pins. In one row: broken, whole, broken; in the other: whole, broken — mirrored on the second side. That is what makes it fit the small case.',
             caseTitle: 'Case',
             caseBody: 'Two parts, base and lid, for M3×12 screws. Printed in PETG: easy to print, strong enough and available in many colours. The Fusion file is there for changes.',
             flashTitle: 'Flashing',

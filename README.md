@@ -23,7 +23,7 @@ It is built as a **constructor**: every Matter device is a small module, and a n
 
 <p>
   <img src="docs/img/mms-assembled.jpg" alt="Micro Matter Switch assembled" width="49%">
-  <img src="docs/img/mms-inside.jpg" alt="Inside: XIAO ESP32-C6 with four buttons in the open case" width="49%">
+  <img src="docs/img/mms-assembled-back.jpg" alt="Assembled, other side with the USB-C port" width="49%">
 </p>
 
 - **Four buttons** as Matter buttons: a press runs an automation in the Home app.
@@ -42,6 +42,16 @@ It is built as a **constructor**: every Matter device is a small module, and a n
 | Output | GPIO 21 | relay or LED, active LOW |
 
 Button 3 and the output both use GPIO 21 in the current code — if you use both, move one of them.
+
+The buttons are ordinary four-leg tactile switches with two diagonally opposite legs broken off; the remaining legs wrap
+around the board's pins. In one row: broken, whole, broken; in the other: whole, broken — mirrored on the second side.
+That is what makes it fit the small case.
+
+<p>
+  <img src="docs/img/mms-inside.jpg" alt="Inside: XIAO ESP32-C6 with four buttons in the open case" width="32%">
+  <img src="docs/img/mms-no-case.jpg" alt="Board with the four buttons, without the case" width="32%">
+  <img src="docs/img/mms-board.jpg" alt="Two XIAO ESP32-C6 boards, top side" width="32%">
+</p>
 
 ## Case
 
