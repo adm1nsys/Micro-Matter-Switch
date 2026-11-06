@@ -14,6 +14,8 @@
     <style>
       .pair { display: grid; gap: 1rem; align-items: center; }
       @media (min-width: 640px) { .pair { grid-template-columns: auto 1fr; } }
+      .photos { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+      .photos img { display: block; width: 100%; height: auto; border-radius: 12px; }
       .pair img { width: 140px; height: auto; padding: 8px; border-radius: 12px; background: #fff; }
       .pair-code { font: 500 clamp(1.5rem, 4vw, 2rem)/1.2 var(--mono); letter-spacing: 0.02em; color: var(--text); }
     </style>
@@ -40,7 +42,13 @@
       <div class="folds">
         <details class="card fold" open>
           <summary><span data-i18n="whatTitle"></span><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
-          <div class="fold-body" data-i18n-html="whatBody"></div>
+          <div class="fold-body">
+            <div class="photos">
+              <img src="img/mms-assembled.jpg" alt="Micro Matter Switch assembled: white and black 3D-printed case" width="1200" height="1200" loading="lazy">
+              <img src="img/mms-inside.jpg" alt="Inside: XIAO ESP32-C6 with four buttons in the open case" width="1200" height="1200" loading="lazy">
+            </div>
+            <div data-i18n-html="whatBody"></div>
+          </div>
         </details>
 
         <details class="card fold">

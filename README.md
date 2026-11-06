@@ -21,6 +21,11 @@ It is built as a **constructor**: every Matter device is a small module, and a n
 
 ## What it is
 
+<p>
+  <img src="docs/img/mms-assembled.jpg" alt="Micro Matter Switch assembled" width="49%">
+  <img src="docs/img/mms-inside.jpg" alt="Inside: XIAO ESP32-C6 with four buttons in the open case" width="49%">
+</p>
+
 - **Four buttons** as Matter buttons: a press runs an automation in the Home app.
 - **One output** (an on/off light in Matter) for a relay or an LED; its state survives a restart.
 - **Matter over Thread**, commissioned over Bluetooth. A Wi-Fi variant is prepared: `BLE_MODE 0` in [`variables.h`](variables.h).
