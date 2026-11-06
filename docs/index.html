@@ -15,6 +15,7 @@
       .pair { display: grid; gap: 1rem; align-items: center; }
       @media (min-width: 640px) { .pair { grid-template-columns: auto 1fr; } }
       .photos { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+      .settings-shot { display: block; width: 100%; max-width: 560px; height: auto; border-radius: 12px; margin-top: 12px; }
       .photos-3 { grid-template-columns: repeat(3, 1fr); }
       .photos img { display: block; width: 100%; height: auto; border-radius: 12px; }
       .pair img { width: 140px; height: auto; padding: 8px; border-radius: 12px; background: #fff; }
@@ -97,14 +98,20 @@
               <table>
                 <tbody>
                   <tr><td>USB CDC On Boot</td><td>Enabled</td></tr>
-                  <tr><td>CPU Frequency</td><td>160 MHz</td></tr>
+                  <tr><td>CPU Frequency</td><td>160MHz (WiFi)</td></tr>
+                  <tr><td>Core Debug Level</td><td>Verbose</td></tr>
                   <tr><td>Erase All Flash Before Sketch Upload</td><td>Enabled</td></tr>
-                  <tr><td>Flash Size / Mode / Frequency</td><td>4 MB · QIO · 80 MHz</td></tr>
+                  <tr><td>Flash Frequency</td><td>80MHz</td></tr>
+                  <tr><td>Flash Mode</td><td>QIO</td></tr>
+                  <tr><td>Flash Size</td><td>4MB (32Mb)</td></tr>
+                  <tr><td>JTAG Adapter</td><td>Disabled</td></tr>
                   <tr><td>Partition Scheme</td><td>Huge APP (3MB No OTA/1MB SPIFFS)</td></tr>
                   <tr><td>Upload Speed</td><td>115200</td></tr>
+                  <tr><td>Zigbee Mode</td><td>Zigbee ED (end device)</td></tr>
                 </tbody>
               </table>
             </div>
+            <img class="settings-shot" src="https://raw.githubusercontent.com/adm1nsys/Micro-Matter-Switch/main/build%20settings.png" alt="Board settings in the Arduino IDE Tools menu" width="862" height="512" loading="lazy">
             <p data-i18n-html="flashNote"></p>
           </div>
         </details>
@@ -161,12 +168,12 @@
             caseTitle: 'Gehäuse',
             caseBody: 'Zwei Teile, Boden und Deckel, für Schrauben M3×12. Gedruckt in PETG: leicht zu drucken, fest genug und in vielen Farben. Die Fusion-Datei ist zum Anpassen da.',
             flashTitle: 'Flashen',
-            flashBody: `<ol><li><a href="https://www.arduino.cc/en/software/" target="_blank" rel="noopener">Arduino IDE</a> installieren — nicht Arduino App Lab.</li><li>In den Einstellungen die Boardverwalter-URL eintragen: <code>https://espressif.github.io/arduino-esp32/package_esp32_index.json</code></li><li>Das Paket <strong>esp32</strong> installieren und <strong>XIAO_ESP32C6</strong> als Board wählen.</li><li>Das Repository herunterladen, <code>MMS.ino</code> öffnen und hochladen (⌘U / Strg+U).</li></ol><p>So war mein Board eingestellt:</p>`,
+            flashBody: `<ol><li><a href="https://www.arduino.cc/en/software/" target="_blank" rel="noopener">Arduino IDE</a> installieren — nicht Arduino App Lab.</li><li>In den Einstellungen die Boardverwalter-URL eintragen: <code>https://espressif.github.io/arduino-esp32/package_esp32_index.json</code></li><li>Das Paket <strong>esp32</strong> installieren und <strong>XIAO_ESP32C6</strong> als Board wählen. Im Boardverwalter <strong>esp32 3.3.0</strong> installieren. Neuere Versionen haben eine API entfernt, die der Code nutzt, und kompilieren nicht.</li><li>Das Repository herunterladen, <code>Micro-Matter-Switch.ino</code> öffnen und hochladen (⌘U / Strg+U). Die Arduino IDE will, dass der Ordner wie der Sketch heißt: Ein ZIP entpackt sich als <code>Micro-Matter-Switch-main</code> — vorher in <code>Micro-Matter-Switch</code> umbenennen.</li></ol><p>So war mein Board eingestellt:</p>`,
             flashNote: `Thread statt WLAN schaltet ${file('build_opt.h')} ein, das neben dem Sketch liegt.`,
             pairTitle: 'Koppeln',
             pairBody: 'In Apple Home, Google Home oder Alexa „Gerät hinzufügen“ wählen und den QR-Code scannen oder den Code eingeben. Das ist der Standard-Testcode des Matter-SDK. Eine der vier Tasten oder BOOT fünf Sekunden halten setzt die Kopplung zurück; solange das Gerät nicht gekoppelt ist, blinkt die LED.',
             codeTitle: 'Aufbau des Codes',
-            codeBody: `<ul><li>${file('MMS.ino')} — Start, Matter, Kopplung und die Schleife.</li><li>${file('DeviceImport.h')} — die Liste der Matter-Geräte; jedes ist ein eigenes Modul mit drei Funktionen (vor dem Start, nach dem Start, in der Schleife). Ein neues Gerät ist eine neue Datei und eine Zeile hier.</li><li>${file('MatterButtons/MatterButton.h', 'MatterButtons/')} — die vier Tasten, ${file('MatterOnOffLight/MatterOnOffLight.h', 'MatterOnOffLight/')} — der Ausgang.</li><li>${file('custom_connect.h')} — eigene Aktionen beim Koppeln, Zurücksetzen und Druck auf BOOT.</li><li>${file('variables.h')} — Pins, Zeiten, BLE- oder WLAN-Modus.</li></ul>`,
+            codeBody: `<ul><li>${file('Micro-Matter-Switch.ino')} — Start, Matter, Kopplung und die Schleife.</li><li>${file('DeviceImport.h')} — die Liste der Matter-Geräte; jedes ist ein eigenes Modul mit drei Funktionen (vor dem Start, nach dem Start, in der Schleife). Ein neues Gerät ist eine neue Datei und eine Zeile hier.</li><li>${file('MatterButtons/MatterButton.h', 'MatterButtons/')} — die vier Tasten, ${file('MatterOnOffLight/MatterOnOffLight.h', 'MatterOnOffLight/')} — der Ausgang.</li><li>${file('custom_connect.h')} — eigene Aktionen beim Koppeln, Zurücksetzen und Druck auf BOOT.</li><li>${file('variables.h')} — Pins, Zeiten, BLE- oder WLAN-Modus.</li></ul>`,
             versionsTitle: 'Versionen',
             title: 'Micro Matter Switch — adm1nsys'
           },
@@ -186,12 +193,12 @@
             caseTitle: 'Case',
             caseBody: 'Two parts, base and lid, for M3×12 screws. Printed in PETG: easy to print, strong enough and available in many colours. The Fusion file is there for changes.',
             flashTitle: 'Flashing',
-            flashBody: `<ol><li>Install the <a href="https://www.arduino.cc/en/software/" target="_blank" rel="noopener">Arduino IDE</a> — not Arduino App Lab.</li><li>Add the board manager URL in Preferences: <code>https://espressif.github.io/arduino-esp32/package_esp32_index.json</code></li><li>Install the <strong>esp32</strong> package and pick <strong>XIAO_ESP32C6</strong> as the board.</li><li>Download the repository, open <code>MMS.ino</code> and upload (⌘U / Ctrl+U).</li></ol><p>My board settings:</p>`,
+            flashBody: `<ol><li>Install the <a href="https://www.arduino.cc/en/software/" target="_blank" rel="noopener">Arduino IDE</a> — not Arduino App Lab.</li><li>Add the board manager URL in Preferences: <code>https://espressif.github.io/arduino-esp32/package_esp32_index.json</code></li><li>Install the <strong>esp32</strong> package and pick <strong>XIAO_ESP32C6</strong> as the board. Install <strong>esp32 3.3.0</strong> in the Boards Manager. Newer versions removed an API the code uses and fail to compile.</li><li>Download the repository, open <code>Micro-Matter-Switch.ino</code> and upload (⌘U / Ctrl+U). The Arduino IDE wants the folder to have the same name as the sketch: a ZIP unpacks as <code>Micro-Matter-Switch-main</code>, so rename it to <code>Micro-Matter-Switch</code> first.</li></ol><p>My board settings:</p>`,
             flashNote: `${file('build_opt.h')}, next to the sketch, switches the build to Thread instead of Wi-Fi.`,
             pairTitle: 'Pairing',
             pairBody: 'In Apple Home, Google Home or Alexa choose “Add device” and scan the QR code or enter the code. It is the Matter SDK’s standard test code. Holding any of the four buttons or BOOT for five seconds resets the pairing; while the device is not paired, the LED blinks.',
             codeTitle: 'How the code is laid out',
-            codeBody: `<ul><li>${file('MMS.ino')} — start-up, Matter, pairing and the loop.</li><li>${file('DeviceImport.h')} — the list of Matter devices; each is its own module with three functions (before start, after start, in the loop). A new device is a new file and one line here.</li><li>${file('MatterButtons/MatterButton.h', 'MatterButtons/')} — the four buttons, ${file('MatterOnOffLight/MatterOnOffLight.h', 'MatterOnOffLight/')} — the output.</li><li>${file('custom_connect.h')} — your own actions on pairing, reset and a BOOT press.</li><li>${file('variables.h')} — pins, timings, BLE or Wi-Fi mode.</li></ul>`,
+            codeBody: `<ul><li>${file('Micro-Matter-Switch.ino')} — start-up, Matter, pairing and the loop.</li><li>${file('DeviceImport.h')} — the list of Matter devices; each is its own module with three functions (before start, after start, in the loop). A new device is a new file and one line here.</li><li>${file('MatterButtons/MatterButton.h', 'MatterButtons/')} — the four buttons, ${file('MatterOnOffLight/MatterOnOffLight.h', 'MatterOnOffLight/')} — the output.</li><li>${file('custom_connect.h')} — your own actions on pairing, reset and a BOOT press.</li><li>${file('variables.h')} — pins, timings, BLE or Wi-Fi mode.</li></ul>`,
             versionsTitle: 'Versions',
             title: 'Micro Matter Switch — adm1nsys'
           }

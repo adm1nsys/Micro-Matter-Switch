@@ -62,11 +62,28 @@ Two parts in [`Case/`](Case) — base and lid — for M3×12 screws: `CaseESP.st
 
 1. Install the [Arduino IDE](https://www.arduino.cc/en/software/) — not Arduino App Lab.
 2. In Preferences, add the board manager URL `https://espressif.github.io/arduino-esp32/package_esp32_index.json`.
-3. Install the **esp32** package and pick **XIAO_ESP32C6** as the board.
-4. Open `MMS.ino` and upload (⌘U / Ctrl+U). [`build_opt.h`](build_opt.h) next to the sketch switches the build to Thread.
+3. Install the **esp32** package and pick **XIAO_ESP32C6** as the board. Install **esp32 3.3.0** in the Boards Manager. Newer versions removed an API the code uses and fail to compile.
+4. Open `Micro-Matter-Switch.ino` and upload (⌘U / Ctrl+U). The Arduino IDE wants the folder to have the same name as the sketch: a ZIP download unpacks as `Micro-Matter-Switch-main`, so rename it to `Micro-Matter-Switch` first. [`build_opt.h`](build_opt.h) next to the sketch switches the build to Thread.
 
-My board settings: USB CDC On Boot enabled, 160 MHz, erase all flash before upload, 4 MB QIO 80 MHz,
-partition scheme *Huge APP (3MB No OTA/1MB SPIFFS)*, upload speed 115200 ([screenshot](build%20settings.png)).
+My board settings (*Tools* menu):
+
+| Setting | Value |
+|---|---|
+| USB CDC On Boot | Enabled |
+| CPU Frequency | 160MHz (WiFi) |
+| Core Debug Level | Verbose |
+| Erase All Flash Before Sketch Upload | Enabled |
+| Flash Frequency | 80MHz |
+| Flash Mode | QIO |
+| Flash Size | 4MB (32Mb) |
+| JTAG Adapter | Disabled |
+| Partition Scheme | Huge APP (3MB No OTA/1MB SPIFFS) |
+| Upload Speed | 115200 |
+| Zigbee Mode | Zigbee ED (end device) |
+
+The same in the Arduino IDE:
+
+<img src="build%20settings.png" alt="Board settings in the Arduino IDE Tools menu" width="560">
 
 ## Pairing
 
@@ -81,7 +98,7 @@ Holding any of the four buttons or BOOT for five seconds resets the pairing. Whi
 
 | File | |
 |---|---|
-| [`MMS.ino`](MMS.ino) | start-up, Matter, pairing and the loop |
+| [`Micro-Matter-Switch.ino`](Micro-Matter-Switch.ino) | start-up, Matter, pairing and the loop |
 | [`DeviceImport.h`](DeviceImport.h) | the list of Matter devices — each is a module with three functions (before start, after start, in the loop); a new device is a new file and one line here |
 | [`MatterButtons/`](MatterButtons) | the four buttons |
 | [`MatterOnOffLight/`](MatterOnOffLight) | the output |
